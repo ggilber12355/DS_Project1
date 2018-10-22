@@ -8,6 +8,8 @@ int main(int argc,char *argv[])
 {
     int m,n,i,j,cnt = 0;
     queue<int> ans;
+    ofstream fout(./argv[1]/final.peak);
+    ifstream fin(./argv[1]/matrix.data);
     fin >> m >> n;
     long int matrix[m][n];
     for(i=0;i<m;i++)
@@ -122,6 +124,8 @@ int main(int argc,char *argv[])
         fout << ans.front()+1 << '\n';
         ans.pop();
     }
+    fout.close();
+    fin.close();
     return 0;
 }
 
