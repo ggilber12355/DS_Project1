@@ -17,18 +17,103 @@ int main(int argc,char *argv[])
             fin >> matrix[i][j];
         }
     }
-    for(i=1;i<m-1;i++)
-	{
-		for(j=1;j<n-1;j++)
-		{
-			if(matrix[i][j] >= matrix[i-1][j] && matrix[i][j] >= matrix[i][j-1] && matrix[i][j] >= matrix[i+1][j] && matrix[i][j] >= matrix[i][j+1]
-			{
-				cnt++;
-				ans.push(i);
-				ans.push(j);
-			}
-		}
-	}
+    }
+    for(i=0;i<m;i++)
+    {
+        for(j=0;j<n;j++)
+        {
+            if(i == 0)
+            {
+                if(j == 0)
+                {
+                    if(matrix[i][j] >= matrix[i+1][j] && matrix[i][j] >= matrix[i][j+1])
+                    {
+                        cnt++;
+                        ans.push(i);
+                        ans.push(j);
+                    }
+                }
+                else if(j != 0 && j != n-1)
+                {
+                    if(matrix[i][j] >= matrix[i+1][j] && matrix[i][j] >= matrix[i][j-1] && matrix[i][j] >= matrix[i][j+1])
+                    {
+                        cnt++;
+                        ans.push(i);
+                        ans.push(j);
+                    }
+                }
+                else
+                {
+                    if(matrix[i][j] >= matrix[i+1][j] && matrix[i][j] >= matrix[i][j-1])
+                    {
+                        cnt++;
+                        ans.push(i);
+                        ans.push(j);
+                    }
+                }
+            }
+            else if(i != 0 && i != m-1)
+            {
+                if(j == 0)
+                {
+                    if(matrix[i][j] >= matrix[i-1][j] && matrix[i][j] >= matrix[i+1][j] && matrix[i][j] >= matrix[i][j+1])
+                    {
+                        cnt++;
+                        ans.push(i);
+                        ans.push(j);
+                    }
+                }
+                else if(j != 0 && j != n-1)
+                {
+                    if(matrix[i][j] >= matrix[i-1][j] && matrix[i][j] >= matrix[i+1][j] && matrix[i][j] >= matrix[i][j-1] && matrix[i][j] >= matrix[i][j+1])
+                    {
+                        cnt++;
+                        ans.push(i);
+                        ans.push(j);
+                    }
+                }
+                else
+                {
+                    if(matrix[i][j] >= matrix[i+1][j] && matrix[i][j] >= matrix[i-1][j] && matrix[i][j] >= matrix[i][j-1])
+                    {
+                        cnt++;
+                        ans.push(i);
+                        ans.push(j);
+                    }
+                }
+            }
+            else
+            {
+                if(j == 0)
+                {
+                    if(matrix[i][j] >= matrix[i-1][j] && matrix[i][j] >= matrix[i][j+1])
+                    {
+                        cnt++;
+                        ans.push(i);
+                        ans.push(j);
+                    }
+                }
+                else if(j != 0 && j != n-1)
+                {
+                    if(matrix[i][j] >= matrix[i-1][j] && matrix[i][j] >= matrix[i][j+1] && matrix[i][j] >= matrix[i][j-1])
+                    {
+                        cnt++;
+                        ans.push(i);
+                        ans.push(j);
+                    }
+                }
+                else
+                {
+                    if(matrix[i][j] >= matrix[i-1][j] && matrix[i][j] >= matrix[i][j-1])
+                    {
+                        cnt++;
+                        ans.push(i);
+                        ans.push(j);
+                    }
+                }
+            }
+        }
+    }
     fout << cnt << '\n';
     while(!ans.empty())
     {
