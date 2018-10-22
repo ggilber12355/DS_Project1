@@ -8,8 +8,11 @@ int main(int argc,char *argv[])
 {
     int m,n,i,j,cnt = 0;
     queue<int> ans;
-    ofstream fout(./argv[1]/final.peak);
-    ifstream fin(./argv[1]/matrix.data);
+    stringstream in_file, out_file;
+    in_file << "./" << argv[1] << "/matrix.data";
+    out_file << "./" << argv[1] << "/final.peak";
+    ofstream fout(out_file.str(),std::ofstream::out);
+    ifstream fin(in_file.str(),std::ifstream::in);
     fin >> m >> n;
     long int matrix[m][n];
     for(i=0;i<m;i++)
